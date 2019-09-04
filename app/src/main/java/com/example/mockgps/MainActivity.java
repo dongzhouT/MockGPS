@@ -74,6 +74,7 @@ import com.baidu.mapapi.map.MyLocationConfiguration;
 import com.baidu.mapapi.map.MyLocationData;
 import com.baidu.mapapi.model.LatLng;
 import com.baidu.mapapi.model.LatLngBounds;
+import com.baidu.mapapi.search.core.PoiDetailInfo;
 import com.baidu.mapapi.search.core.PoiInfo;
 import com.baidu.mapapi.search.core.SearchResult;
 import com.baidu.mapapi.search.poi.OnGetPoiSearchResultListener;
@@ -81,6 +82,7 @@ import com.baidu.mapapi.search.poi.PoiBoundSearchOption;
 import com.baidu.mapapi.search.poi.PoiCitySearchOption;
 import com.baidu.mapapi.search.poi.PoiDetailResult;
 import com.baidu.mapapi.search.poi.PoiDetailSearchOption;
+import com.baidu.mapapi.search.poi.PoiDetailSearchResult;
 import com.baidu.mapapi.search.poi.PoiIndoorResult;
 import com.baidu.mapapi.search.poi.PoiNearbySearchOption;
 import com.baidu.mapapi.search.poi.PoiResult;
@@ -748,6 +750,14 @@ public class MainActivity extends AppCompatActivity
 //                Log.d("DETAIL",poiDetailResult.address);
 //                Log.d("DETAIL",poiDetailResult.name);
 //                Log.d("DETAIL",poiDetailResult.tag);
+            }
+
+            @Override
+            public void onGetPoiDetailResult(PoiDetailSearchResult poiDetailSearchResult) {
+                List<PoiDetailInfo> infoList = poiDetailSearchResult.getPoiDetailInfoList();
+                if(infoList!=null&&infoList.size()>0){
+                    DisplayToast(infoList.get(0).getName());
+                }
             }
 
             @Override

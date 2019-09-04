@@ -6,7 +6,7 @@ android {
         applicationId "com.example.mockgps"
         minSdkVersion 14
         targetSdkVersion 27
-        versionCode 1
+        versionCode 2019090401
         versionName "1.9.3"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
@@ -33,6 +33,12 @@ android {
         // Or, if you prefer, you can continue to check for errors in release builds,
         // but continue the build even when errors are found:
         abortOnError false
+    }
+    android.applicationVariants.all { variant ->
+        variant.outputs.all {
+            outputFileName = "MockGps_v${defaultConfig.versionName}_${name}_${defaultConfig.versionCode}.apk"
+        }
+
     }
 }
 
